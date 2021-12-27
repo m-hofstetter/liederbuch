@@ -1,24 +1,301 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
+\documentclass[a4paper, 10pt, twoside]{article}
+
+\usepackage[margin=20mm]{geometry}
+\usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{imakeidx}
-\makeindex[columns=3, title=Alphabetical Index, 
-           options= -s style.ist]
+\usepackage[utf8]{inputenc}
+\usepackage{guitar}
 
-\begin{document}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[nonewpage,noautomatic]{imakeidx}
 
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{tocloft}
+\usepackage{musixtex}
+\usepackage{geometry}
+\usepackage{xifthen}
+\usepackage{tikz}
+\usepackage{harmony}
+\usepackage{intcalc}
+\usepackage{simplegtab}
+\usepackage{simplesong}
+\usepackage{amsmath}
+\usepackage{multicol}
+
+
+% Keine Seitenzahlen im TOC
+\let\Contentsline\contentsline
+\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
+
+\makeindex[program=texindy, columns=2, title=Alphabetisches Inhaltsverzeichnis, options= -L german-din5007 -C utf8, columnsep=1.2cm]
+
+
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{} % Keine Nummerierung fuer section
+\raggedbottom % text wird nicht vertikal ausgedehnt
+\def\guitarPreAccord{\footnotesize\strut\sffamily\color{gray}\bfseries} % Formatierung Akkorde
+\newcommand{\h}{\hspace{12mm}} % Abstand Soloakkorde
+\newcommand{\hh}{\hspace{6mm}} % halber Abstand Soloakkorde 
+\newcommand{\gSec}[1]{{\bfseries #1}\nopagebreak} % Formatierung Chorus, Intro etc.
+\newcommand{\sprache}[1]{\textit{#1}} % Formatierung Sprache
+\newcommand{\zusatzeintrag}[1]{\index{#1@\textit{#1}}}
+\newcommand{\abschnitt}[1]{\addcontentsline{toc}{part}{#1}\fancyhead[C]{#1}}
+\cftpagenumbersoff{part}
+
+% Kopf- und Fusszeile
+\pagestyle{fancy}
+\fancyhead{}
+%\fancyhead[LE,RO]{\thepage}
+\fancyfoot{}
+\fancyfoot[LE, RO]{Lied \thesection}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% TOC
+\renewcommand{\cftsecfont}{\normalfont}
+\setlength{\cftbeforesecskip}{0mm}
+\cftsetindents{section}{0mm}{5mm}
+\renewcommand{\cftsecnumwidth}{2mm}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsecaftersnum}{. \hfill}
+\setlength{\columnsep}{1.2cm}
+\renewcommand{\cftpnumalign}{r}
+\addto\captionsngerman{
+  \renewcommand{\contentsname}
+    {}
+}
+\renewcommand{\numberline}[1]{#1. }
+
+
+% Akkorde entfernen
+% \renewcommand{\guitarPut}{}
+% \renewcommand{\guitarPutOnSpace}{}
+% \renewcommand{\guitarPutDist}{}
+% \renewcommand{\guitarPutMerge}{}
+
+
+\usepackage{subfiles}
+
+% Kategorien:
+% Bündische, traditionelle und Pfadfinderlieder
+% Pop
+% Rock
+% Singspiele und Lieder für jedes Alter
+% Schlager und Neue Deutsche Welle
+% Country und Folk
+% Hymnen
+% Bayerische Lieder
+% Anderes
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \pagestyle{fancy}\fancyfoot{}\fancyfoot[C]{Inhaltsverzeichnis}
+  \fancyhead[LE,RO]{\thepage}
+}
+
+\begin{document}     
+\subfile{titlepage}
+\pagebreak
+\pagestyle{fancy}\fancyfoot{}\fancyfoot[C]{Inhaltsverzeichnis}
+\section*{Inhaltsverzeichnis nach Genre}
+\begin{multicols}{2}
 \tableofcontents
-
-\section{Introduction}
-In this example, several keywords\index{keywords} will be used which are important and deserve to appear in the Index\index{Index}.
-
-Terms like generate\index{generate}, a great\index{great} list and som other\index{others} terms that might be important\index{important} 
-will also show up. Terms in the index can also be nested \index{Index!nested}
-
+\end{multicols}
+\clearpage
+\printindex
 \clearpage
 
-\section{Second section}
-This second section\index{section} may include some special word, and expand the ones already used\index{keywords!used}. 
+\fancyfoot[LE, RO]{Lied \thesection}
+\subfile{songs/Weil_Ich_Ein_Otti_Bin}
 
-\printindex
+\abschnitt{Rock}
+\subfile{songs/Bohemian_Rhapsody}
+\subfile{songs/Wonderwall}
+\subfile{songs/Rose_Tattoo}
+\subfile{songs/Altes_Fieber}
+\subfile{songs/Zehn_Jaegermeister}
+\subfile{songs/Losing_My_Religion}
+\subfile{songs/Summer_Of_69}
+\subfile{songs/A_Horse_With_No_Name}
+\subfile{songs/Junge}
+\subfile{songs/Alles_Aus_Liebe}
+\subfile{songs/We_Didnt_Start_The_Fire}
+\subfile{songs/Wind_Of_Change}
+\subfile{songs/American_Pie}
+\subfile{songs/Let_It_Be}
+\subfile{songs/Behind_Blue_Eyes}
+\subfile{songs/Imagine}
+\subfile{songs/Boulevard_Of_Broken_Dreams}
+\subfile{songs/Dont_Stop_Believin}
+\zweilieder{Ein_Kompliment}{Knockin_On_Heavens_Door}{Ein Kompliment, Knockin' on Heaven's Door}
+\subfile{songs/Eye_Of_The_Tiger}
+\subfile{songs/Westerland}
+\subfile{songs/Yesterday}
+\subfile{songs/Schrei_Nach_Liebe}
+\subfile{songs/Zombie}
+\subfile{songs/San_Francisco}
+\subfile{songs/Tage_Wie_Diese}
+\subfile{songs/Father_And_Son}
+\subfile{songs/Hallelujah}
+\subfile{songs/Cats_In_The_Cradle}
+\subfile{songs/Hotel_California}
+\subfile{songs/House_Of_The_Rising_Sun}
+\subfile{songs/We_Will_Rock_You}
+
+\abschnitt{Singspiele und Kinderlieder}
+\subfile{songs/Schnappi}
+\subfile{songs/Koerperteil_Blues}
+\subfile{songs/Fly_Linda_Fly}
+\dreilieder{Drei_Chinesen}{Ein_Kuechenmops}{Das_Rote_Pferd}{Drei Chinesen, Küchenmops, Das rote Pferd}
+\zweilieder{Old_MacDonald}{Meine_Tante_aus_Marokko}{Old MacDonald, Meine Tante aus Marokko}
+\dreilieder{If_Youre_Happy}{Auf_Der_Mauer}{Happy_Birthday}{If You're Happy, Auf der Mauer, Happy Birthday}
+\subfile{songs/Die_Affen_Rasen}
+\subfile{songs/Ein_Mann_Der_Sich_Kolumbus_Nannt}
+\zweilieder{Fliegerlied}{Koerperzellen-Rock}{Fliegerlied, Körperzellen-Rock}
+\zweilieder{Das_Auto_Von_Lucio}{Hey_Ho_Spann_Den_Wagen}{Das Auto von Lucio; Hey Ho, Spann den Wagen an}
+\subfile{songs/Wie_Schoen}
+\subfile{songs/Der_Loewe}
+\subfile{songs/Meine_Oma}
+\dreilieder{Eisgekuehlte_Coca-Cola}{Mein_Hut}{Aramsamsam}{Eisgekühlte Coca-Cola, Mein Hut, Aramsamsam}
+\subfile{songs/Was_Muessen_Das_Fuer_Baeume_Sein}
+\subfile{songs/Hoerst_Du_Die_Regenwuermer}
+
+\abschnitt{Film und Fernsehen}
+\subfile{songs/Circle_Of_Life}
+\subfile{songs/Always_Look_On_The_Bright_Side_Of_Life}
+\subfile{songs/Bibi_Und_Tina}
+\subfile{songs/Biene_Maja}
+\subfile{songs/FUN}
+\subfile{songs/Probiers_Mal_Mit_Gemuetlichkeit}
+\subfile{songs/Hey_Pippi}
+\subfile{songs/Mamma_Mia}
+\subfile{songs/Eine_Insel_Mit_Zwei_Bergen}
+
+\abschnitt{Pop und Lieder aus diesem Jahrtausend}
+\subfile{songs/Grenade}
+\subfile{songs/Marry_You}
+\subfile{songs/Alles_Nur_Geklaut}
+\subfile{songs/New_Soul}
+\subfile{songs/Jetzt_Ist_Sommer}
+\subfile{songs/All_Star}
+\subfile{songs/Lemon_Tree}
+\subfile{songs/Wake_Me_Up}
+\subfile{songs/Four_Chords}
+\subfile{songs/Another_Love}
+\subfile{songs/Perfekte_Welle}
+\subfile{songs/Pompeii}
+\subfile{songs/Autobahn}
+\subfile{songs/Was_Du_Liebe_Nennst}
+\subfile{songs/Auf_Uns}
+\subfile{songs/Viva_La_Vida}
+\subfile{songs/Radioactive}
+\subfile{songs/Bad_Day}
+\subfile{songs/Let_Her_Go}
+\subfile{songs/Stolen_Dance}
+\subfile{songs/Bitch}
+\subfile{songs/Riptide}
+\subfile{songs/Mad_World}
+\subfile{songs/Blinding_Lights}
+\subfile{songs/Umbrella}
+\subfile{songs/Bros}
+\subfile{songs/Counting_Stars}
+\subfile{songs/Demons}
+\subfile{songs/Lieder}
+\subfile{songs/Die_Nacht_Von_Freitag}
+\subfile{songs/Einmal_Um_Die_Welt}
+\subfile{songs/Paedagogen}
+\subfile{songs/Fenster}
+\subfile{songs/Teenage_Dirtbag}
+\subfile{songs/Wolke_4}
+\subfile{songs/Geboren_Um_Zu_Leben}
+\subfile{songs/Wrecking_Ball}
+\subfile{songs/Hey_There_Delilah}
+\subfile{songs/Call_Me_Maybe}
+\subfile{songs/Home}
+\subfile{songs/Summertime_Sadness}
+
+\abschnitt{Bayerische Lieder}
+\subfile{songs/Aba_olle_samma_Wixa}
+\subfile{songs/Mei_Voda}
+\subfile{songs/Bayern_Des_Samma_Mia}
+\subfile{songs/Es_Lebe_Der_Sport}
+\subfile{songs/Fuerstenfeld}
+\subfile{songs/Haberfeldtreiber}
+\subfile{songs/Kater-Song}
+\subfile{songs/Die_Alten_Rittersleut}
+\subfile{songs/Ham_Kummst}
+\subfile{songs/Soits_Leben}
+\subfile{songs/Skandal_Im_Sperrbezirk}
+
+\abschnitt{Schlager, NDW, Disco und andere Peinlichkeiten}
+\subfile{songs/Blau_Wie_Das_Meer}
+\subfile{songs/Ein_Stern}
+\subfile{songs/Karl_Der_Kaefer}
+\subfile{songs/Fata_Morgana}
+\subfile{songs/Atemlos}
+\subfile{songs/Neunundneunzig_Luftballons}
+\subfile{songs/Irgendwie_Irgendwo_Irgendwann}
+\subfile{songs/Major_Tom}
+\subfile{songs/Rasputin}
+\subfile{songs/Anita}
+\subfile{songs/Ich_War_Noch_Niemals_In_New_York}
+\subfile{songs/Am_Tag_Als_Conny_Kramer_Starb}
+
+\abschnitt{Pfadfinder-, Volks-, und bündische Lieder}
+\subfile{songs/Nehmt_Abschied_Brueder}
+\subfile{songs/Am_Westermanns_Loenstief}
+\subfile{songs/Ueber_Den_Wolken}
+\subfile{songs/Bella_Ciao}
+\subfile{songs/Buendische_Vaganten}
+\subfile{songs/Der_Piet_Am_Galgen}
+\subfile{songs/Die_Freie_Republik}
+\subfile{songs/Die_Gedanken}
+\subfile{songs/I_Like_The_Flowers}
+\subfile{songs/Strassen_Auf}
+\subfile{songs/Die_Weber}
+\subfile{songs/Edelweisspiraten}
+\subfile{songs/Er_War_Ein_Pfadfinder}
+\subfile{songs/Flinke_Haende}
+\subfile{songs/Heute_Hier_Morgen_Dort}
+\subfile{songs/Wellerman}
+\subfile{songs/Drunken_Sailor}
+\subfile{songs/My_Bonnie}
+\subfile{songs/Molly_Malone}
+\subfile{songs/Irischer_Segen}
+
+\abschnitt{Hymnen}
+\subfile{songs/Battle_Hymn}
+\subfile{songs/Die_Internationale}
+\subfile{songs/Bayernhymne}
+\subfile{songs/An_Die_Freude}
+
+\abschnitt{Country und Folk}
+\subfile{songs/Leavin_On_A_Jet_Plane}
+\subfile{songs/Blowin_In_The_Wind}
+\subfile{songs/Die_Ballade_Vom_Pfeiffer}
+\subfile{songs/Sweet_Home_Alabama}
+\subfile{songs/Jolene}
+\subfile{songs/California_Dreamin}
+\zweilieder{Take_Me_Home_Country_Roads}{Sons_And_Daughters}{Country Roads, Sons And Daughters}
+\subfile{songs/Cotton_Eyed_Joe}
+
+\abschnitt{Geistliche Lieder}
+\subfile{songs/Laudato_Si}
+\zweilieder{Wo_Zwei_Oder_Drei}{Hes_Got_The_Whole_World}{Wo zwei oder drei, He's Got the Whole World}
+
+\abschnitt{Noch nicht kategorisiert}
+\subfile{songs/Over_The_Rainbow}
+\subfile{songs/Mein_Kaktus}
+\subfile{songs/Wonderful_World}
+\subfile{songs/In_The_Summertime}
+\subfile{songs/Puff_The_Magic_Dragon}
+\subfile{songs/Que_Sera_Sera}
+\subfile{songs/La_Vie_En_Rose}
+
+\fancyhf{}
+\pagebreak
+\subfile{endpage}
 \end{document}

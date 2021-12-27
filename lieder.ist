@@ -1,9 +1,9 @@
 headings_flag 1
 
-heading_prefix "\n\\centering\\large\\sffamily\\bfseries%
+heading_prefix "\n\\centering\\large%
 \\noindent\\textbf{"heading_suffix "}\\par\\nopagebreak\n"
 
-item_0 "\n \\item \\small "
+item_0 "\n \\item \\normalsize "
 
 delim_0 " \\hfill "
 delim_1 " \\hfill "

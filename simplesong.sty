@@ -1,0 +1,63 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{simplesong}
+  [package for my own purpose]
+  
+\newenvironment{songwithoutpagebreak}[4][]{
+    \noindent
+    #3\hfill \ifthenelse{\equal{#1}{}}{}{Kapo im #1. Bund}\\
+    \vspace{-10mm}
+    \section{#2}
+    \fancyfoot[LE, RO]{Lied \thesection}\fancyfoot[C]{#2}
+    \setcounter{page}{\thesection}
+    \index{#2}
+    \ifthenelse{\equal{#4}{}}{}{{\small\itshape\color{gray}#4}}
+    
+    \begin{guitar}
+}{
+    \end{guitar}
+}
+
+% Environment fuer Lieder
+% 2 Kapo
+% 3 Titel
+% 4 Künstler
+% 5 Kommentare
+\newenvironment{song}[4][]{
+    \begin{songwithoutpagebreak}[#1]{#2}{#3}{#4}
+}{
+    \end{songwithoutpagebreak}
+    \clearpage
+}
+
+\newenvironment{songwithhfill}[4][]{
+    \begin{songwithoutpagebreak}[#1]{#2}{#3}{#4}
+}{
+    \end{songwithoutpagebreak}
+    
+    \vspace{1cm}
+}
+
+\newcommand{\dreilieder}[4]{
+\def\erste{\the{\value{section}-1}}
+\subfile{songs/#1}
+
+\vspace{1cm}
+\subfile{songs/#2}
+
+\vspace{1cm}
+\subfile{songs/#3}
+\fancyfoot[LE, RO]{\addtocounter{section}{-2} Lieder \thesection\addtocounter{section}{2} - \thesection}
+\fancyfoot[C]{#4}
+\clearpage
+}
+
+\newcommand{\zweilieder}[3]{
+\subfile{songs/#1}
+
+\vspace{1cm}
+\subfile{songs/#2}
+\fancyfoot[LE, RO]{\addtocounter{section}{-1} Lieder \thesection\addtocounter{section}{1} - \thesection}
+\fancyfoot[C]{#3}
+\clearpage
+}
+\endinput
