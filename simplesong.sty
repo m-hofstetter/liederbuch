@@ -2,56 +2,48 @@
 \ProvidesPackage{simplesong}
   [package for my own purpose]
   
-\newenvironment{songwithoutpagebreak}[4][]{
+
+\newenvironment{song}[4][]{
     \noindent
-    #3\hfill \ifthenelse{\equal{#1}{}}{}{Kapo im #1. Bund}\\
+    #3\hfill \ifthenelse{\equal{#1}{}}{}{Kapo im #1. Bund}\newline
     \vspace{-10mm}
     \section{#2}
     \setcounter{page}{\thesection}
     \index{#2}
-    \ifthenelse{\equal{#4}{}}{}{{\small\itshape\color{gray}#4}}
+    \ifthenelse{\equal{#4}{}}{}{{\small\itshape\color{gray}#4\hfill}}
+
     \begin{guitar}
 }{
     \end{guitar}
 }
 
-\newenvironment{song}[4][]{
-    \begin{songwithoutpagebreak}[#1]{#2}{#3}{#4}
-}{
-    \end{songwithoutpagebreak}
-    \clearpage
-}
-
-\newcommand{\einlied}[1]{
-    \subfile{songs/#1}
-
+\newcommand{\einlied}[2]{
     \fancyfoot{}
     \fancyfoot[LE, RO]{Lied \thesection}
-    \fancyfoot[C]{#1}
+    \fancyfoot[C]{#2}
+    \subfile{songs/#1}
     \clearpage
 }
 
 \newcommand{\zweilieder}[3]{
-    \subfile{songs/#1}
-    \vspace{1cm}
-    \subfile{songs/#2}
-
     \fancyfoot{}
     \fancyfoot[LE, RO]{\addtocounter{section}{-1} Lieder \thesection\addtocounter{section}{1} - \thesection}
     \fancyfoot[C]{#3}
+    \subfile{songs/#1}
+    \vspace{1cm}\newline
+    \subfile{songs/#2}
     \clearpage
 }
 
 \newcommand{\dreilieder}[4]{
-    \subfile{songs/#1}
-    \vspace{1cm}
-    \subfile{songs/#2}
-    \vspace{1cm}
-    \subfile{songs/#3}
-
     \fancyfoot{}
     \fancyfoot[LE, RO]{\addtocounter{section}{-2} Lieder \thesection\addtocounter{section}{2} - \thesection}
     \fancyfoot[C]{#4}
+    \subfile{songs/#1}
+    \vspace{1cm}\newline
+    \subfile{songs/#2}
+    \vspace{1cm}\newline
+    \subfile{songs/#3}
     \clearpage
 }
 
