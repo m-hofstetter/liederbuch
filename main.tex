@@ -8,7 +8,7 @@
 
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage[nonewpage,noautomatic]{imakeidx}
+\usepackage[nonewpage, xindy]{imakeidx}
 
 \usepackage{fancyhdr}
 \usepackage{titlesec}
@@ -29,12 +29,12 @@
 
 % Keine Seitenzahlen im TOC
 \let\Contentsline\contentsline
-\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{}}
+\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{#3}}
 
 \makeindex[program=texindy, columns=2, title=Alphabetisches Inhaltsverzeichnis, options= -L german-din, columnsep=1.2cm]
 
 
-\titleformat{\section}{\normalfont\Large\bfseries}{}{0pt}{} % Keine Nummerierung fuer section
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{}{0pt}{} % Keine Nummerierung fuer section
 \raggedbottom % text wird nicht vertikal ausgedehnt
 \def\guitarPreAccord{\footnotesize\strut\sffamily\color{gray}\bfseries} % Formatierung Akkorde
 \newcommand{\h}{\hspace{12mm}} % Abstand Soloakkorde
@@ -67,7 +67,7 @@
   \renewcommand{\contentsname}
     {}
 }
-\renewcommand{\numberline}[1]{#1. }
+\renewcommand{\numberline}[1]{}
 
 
 % Akkorde entfernen
