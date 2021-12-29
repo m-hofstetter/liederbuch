@@ -1,0 +1,28 @@
+\documentclass[a5paper, 12pt, twoside]{article}
+
+\input{preamble.tex}
+\makeindex[program=texindy, columns=1, title=Alphabetisches Inhaltsverzeichnis, options= -L german-din -M sty/index_style.xdy, columnsep=1.2cm]
+
+% Make chords invisible
+\renewcommand{\guitarPut}{}
+\renewcommand{\guitarPutOnSpace}{}
+\renewcommand{\guitarPutDist}{}
+\renewcommand{\guitarPutMerge}{}
+
+\begin{document}     
+\subfile{pag/titlepage}
+\pagebreak
+\pagestyle{fancy}\fancyfoot{}\fancyfoot[C]{Inhaltsverzeichnis}
+\section*{Inhaltsverzeichnis nach Genre}
+\tableofcontents
+\clearpage
+\printindex
+\clearpage
+
+
+\subfile{content}
+
+\fancyhf{}
+\pagebreak
+\subfile{pag/endpage}
+\end{document}
