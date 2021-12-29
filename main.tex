@@ -1,101 +1,11 @@
 \documentclass[a4paper, 10pt, twoside]{article}
 
-\usepackage[margin=20mm]{geometry}
-\usepackage[ngerman]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{guitar}
-
-\usepackage{hyperref}
-\usepackage{xcolor}
-\usepackage[nonewpage, xindy]{imakeidx}
-
-\usepackage{fancyhdr}
-\usepackage{titlesec}
-\usepackage{graphicx}
-\usepackage{ifthen}
-\usepackage{tocloft}
-\usepackage{musixtex}
-\usepackage{geometry}
-\usepackage{xifthen}
-\usepackage{tikz}
-\usepackage{harmony}
-\usepackage{intcalc}
-\usepackage{sty/simplegtab}
-\usepackage{sty/simplesong}
-\usepackage{amsmath}
-\usepackage{multicol}
-
-
-% Keine Seitenzahlen im TOC
-\let\Contentsline\contentsline
-\renewcommand\contentsline[3]{\Contentsline{#1}{#2}{#3}}
-
-\makeindex[program=texindy, columns=2, title=Alphabetisches Inhaltsverzeichnis, options= -L german-din -M sty/index_style.xdy, columnsep=1.2cm]
-
-
-\titleformat{\section}[hang]{\normalfont\Large\bfseries}{}{0pt}{} % Keine Nummerierung fuer section
-\raggedbottom % text wird nicht vertikal ausgedehnt
-\def\guitarPreAccord{\footnotesize\strut\sffamily\color{gray}\bfseries} % Formatierung Akkorde
-\newcommand{\h}{\hspace{12mm}} % Abstand Soloakkorde
-\newcommand{\hh}{\hspace{6mm}} % halber Abstand Soloakkorde 
-\newcommand{\gSec}[1]{{\bfseries #1}\nopagebreak} % Formatierung Chorus, Intro etc.
-\newcommand{\sprache}[1]{\textit{#1}} % Formatierung Sprache
-\newcommand{\zusatzeintrag}[1]{\index{#1@\textit{#1}}}
-\newcommand{\abschnitt}[1]{\addcontentsline{toc}{part}{#1}\fancyhead[C]{#1}}
-\cftpagenumbersoff{part}
-
-% Kopf- und Fusszeile
-\pagestyle{fancy}
-\fancyhead{}
-% %\fancyhead[LE,RO]{\thepage}
-% \fancyfoot{}
-% \fancyfoot[LE, RO]{Lied \thesection}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
-% TOC
-\renewcommand{\cftsecfont}{\normalfont}
-\setlength{\cftbeforesecskip}{0mm}
-\cftsetindents{section}{0mm}{5mm}
-\renewcommand{\cftsecnumwidth}{2mm}
-\renewcommand{\cftsecpagefont}{\normalfont}
-\renewcommand{\cftsecaftersnum}{. \hfill}
-\setlength{\columnsep}{1.2cm}
-\renewcommand{\cftpnumalign}{r}
-\addto\captionsngerman{
-  \renewcommand{\contentsname}
-    {}
-}
-\renewcommand{\numberline}[1]{}
-
-
-% Akkorde entfernen
-% \renewcommand{\guitarPut}{}
-% \renewcommand{\guitarPutOnSpace}{}
-% \renewcommand{\guitarPutDist}{}
-% \renewcommand{\guitarPutMerge}{}
-
-
-\usepackage{subfiles}
-
-
-\fancypagestyle{plain}{%
-  \fancyhf{}
-  \pagestyle{fancy}\fancyfoot{}\fancyfoot[C]{Inhaltsverzeichnis}
-}
+\input{preamble.tex}
 
 \begin{document}     
 \subfile{pag/titlepage}
 \pagebreak
-\pagestyle{fancy}\fancyfoot{}\fancyfoot[C]{Inhaltsverzeichnis}
-\section*{Inhaltsverzeichnis nach Genre}
-\begin{multicols}{2}
-\tableofcontents
-\end{multicols}
-\clearpage
-\printindex
-\clearpage
+
 
 \subfile{content}
 
