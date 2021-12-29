@@ -1,10 +1,19 @@
 \documentclass[a4paper, 10pt, twoside]{article}
 
 \input{preamble.tex}
+\makeindex[program=texindy, columns=2, title=Alphabetisches Inhaltsverzeichnis, options= -L german-din -M sty/index_style.xdy, columnsep=1.2cm]
 
 \begin{document}     
 \subfile{pag/titlepage}
 \pagebreak
+\pagestyle{fancy}\fancyfoot{}\fancyfoot[C]{Inhaltsverzeichnis}
+\section*{Inhaltsverzeichnis nach Genre}
+\begin{multicols}{2}
+\tableofcontents
+\end{multicols}
+\clearpage
+\printindex
+\clearpage
 
 
 \subfile{content}
